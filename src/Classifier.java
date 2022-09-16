@@ -1,15 +1,15 @@
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class classifier {
+public class Classifier {
     public static boolean isAlpha(String word) {
         return validate("[A-Za-z_]+",word);
     }
     public static boolean isInt(String word ) { return validate("[0-9]+",word); }
     public static boolean  isFloat(String word) {return validate("[0-9]*[.][0-9]+",word);}
-    public static boolean isBreaker(String word){
+    public static boolean isBreaker(char ch){
         // dot is not included, because dot can be interpreted in two ways.
-        return classifier.validate("[?!@#$%^&*()-+=}{\"':;,`~<>/\\|\\[\\]\\s\\n\\t\\\\]",word);
+        return Classifier.validate("[?!@#$%^&*()-+=}{\"':;,`~<>/\\|\\[\\]\\s\\n\\t\\\\]",String.valueOf(ch));
     }
     public static boolean isIdentifier(String word) {
         String RE = "[_]+([0-9A-Za-z]_*)+|[A-Za-z][A-Za-z0-9_]*";
